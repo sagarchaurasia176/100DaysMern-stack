@@ -18,7 +18,7 @@ function Blog() {
                 voluptatibus pariatur!
             </p>
             <br></br>
-            <Content/>
+            {/* <Content/> */}
         </div>
     );
 }
