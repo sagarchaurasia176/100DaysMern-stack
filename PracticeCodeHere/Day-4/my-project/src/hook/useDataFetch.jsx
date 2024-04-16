@@ -1,18 +1,26 @@
-import React, { useState } from 'react'
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
- async function UseData() {
-    //states
-    const [loading , setLoading] = useState(false);
+function UseData() {
+  //states
+  const [loading, setLoading] = useState(false);
 
-      const apiHandler = async()=>{
-        setLoading(true)
-        const url = 'https://randomuser.me/api/';
-        const getConvertData = axios.get(url);
-        setLoading(false)
-    }
-   
-  return {loading , apiHandler}
+  const apiHandler = async () => {
+    setLoading(true);
+    const url = "https://randomuser.me/api/";
+    const getConvertData = await axios.get(url);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    apiHandler();
+  }, []);
+
+  return { loading, apiHandler };
 }
+// calling the functions here
+useEffect(() => {
+  apiHandler();
+}, []);
 
-export default UseData
+export default UseData;

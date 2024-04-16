@@ -1,15 +1,13 @@
 import React from "react";
-import UseData from "../hook/useDataFetch";
+import useData from "../hook/useDataFetch";
 import { BarLoader } from "react-spinners";
 
-{
-  /* <BeatLoader color="#36d7b7" /> */
-}
 function Card() {
-  const { loading, apiHandler } = UseData();
-  // api calls
+  const { loading, apiHandler } = useData("");
+  // api callsb
   const MoveHandler = () => {
     apiHandler();
+    console.log(apiHandler());
   };
 
   return (
@@ -55,6 +53,7 @@ function Card() {
             </div>
           </>
         )}
+
         <div class="flex m-auto h-auto p-2 ">
           <button class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Add friend
