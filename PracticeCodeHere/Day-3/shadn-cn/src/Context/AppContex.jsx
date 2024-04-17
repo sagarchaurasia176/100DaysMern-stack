@@ -1,56 +1,63 @@
-import { createContext, useState } from "react";
 import { ApiUrl } from "@/Api/BaseUrl";
-//context api created here
-export const AppContext = createContext();
-//context Provider here
-export const ContextProvider = ({ children }) => {
-  // this all are basically th  e provider
+import { createContext, useState } from "react";
+//context API HERE
+export const AllstatesData = createContext();
+
+export default function AllstatesProvider({ children }) {
+  //providers
   const [Loading, setLoading] = useState(false);
-  const [post, setPost] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(null);
+  const [post, setPost] = useState([]);
 
-  const blogData = async (page = 1) => {
+
+
+  //for api calling here
+  const ApiCalling = async () => {
     setLoading(true);
-    const url = `${ApiUrl}?page=${page}`;
-    console.log(url)
+    let url = ApiUrl;
     try {
-      const apiData = await fetch(url);
-      const convert = await apiData.json();
-      console.log(convert);
-      // modified this
-      setPage(convert.page);
-      setPost(convert.posts);
-      setTotal(convert.totalPages);
+      const FetchData = await fetch(url);
+      const convertJso = await FetchData.json();
+     // console.log(convertJso);
+      //getting the data from the json
+      setPage(convertJso.page);
+      setTotal(convertJso.total);
+      setPost(convertJso.post);
+      setLoading(false);
     } catch {
-      console.log("errror in api response");
-      setPage(1);
-      setPost([]);
+      console.error("error in the contextAPI")
     }
     setLoading(false);
   };
-  //page handling
-  const pageHandling = (page) => {
+
+  const pageHandler = (page) => {
     setPage(page);
-    blogData(page);
+    ApiCalling();
   };
-  // alll data
-  const AllData = {
+
+
+
+
+
+  // convert into one objects
+  const ValuesOFData = {
+    ApiCalling,
+    pageHandler,
     Loading,
-    setLoading,
-    post,
-    setPage,
     setPost,
-    setTotal,
+    setLoading,
     page,
+    setPage,
+    setTotal,
     total,
-    blogData,
-    pageHandling,
+    post,
+    setLoading,
   };
-  // syntax of the sending the provider
+
   return (
-    <AppContext.Provider value={AllData}>
-    {children}
-    </AppContext.Provider>
+    <AllstatesData.Provider value={ValuesOFData}>
+      {children}
+    </AllstatesData.Provider>
   );
-};
+}

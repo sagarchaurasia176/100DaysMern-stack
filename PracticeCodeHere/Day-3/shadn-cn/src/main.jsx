@@ -3,11 +3,12 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import { ContextProvider } from "./Context/AppContex.jsx";
+import AllstatesProvider from "./Context/AppContex.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <ContextProvider>
+    <AllstatesProvider>
       <App />
-    </ContextProvider>
+    </AllstatesProvider>
   </BrowserRouter>
 );

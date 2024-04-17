@@ -3,20 +3,23 @@ import Header from "./page/Header";
 import { Route, Routes } from "react-router-dom";
 import Blog from "./page/Blog";
 import Navbar from "./page/Navbar";
-import { useContext, useEffect } from "react";
-import { AppContext } from "./Context/AppContex";
+import { useContext , useEffect } from "react";
+import { AllstatesData } from "./Context/AppContex";
 
 function App() {
-  const blogData = useContext(AppContext);
+const {ApiCalling} = useContext(AllstatesData);
+
+
   useEffect(() => {
-    blogData();
+    ApiCalling();
+    console.log(ApiCalling())
   }, []);
+
 
   return (
     <>
       <div>
         <Navbar />
-        <Blog />
         <Routes>
           <Route path="/" element={<Header />} />
           <Route path="/Blog" element={<Blog />} />

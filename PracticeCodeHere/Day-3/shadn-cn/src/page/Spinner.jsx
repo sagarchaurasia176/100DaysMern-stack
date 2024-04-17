@@ -3,7 +3,7 @@ import { BarLoader } from 'react-spinners'
 function Spinner() {
     return (
         <div>
-            <BarLoader color="#36d7b7" />
+            <BarLoader className=' flex m-auto  my-72' color="#36d7b7" />
         </div>
     )
 }
