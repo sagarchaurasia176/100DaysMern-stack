@@ -29,14 +29,11 @@ export const ContextProvider = ({ children }) => {
     }
     setLoading(false);
   };
-
-
   //page handling
   const pageHandling = (page) => {
     setPage(page);
     blogData(page);
   };
-
   // alll data
   const AllData = {
     Loading,
@@ -50,8 +47,10 @@ export const ContextProvider = ({ children }) => {
     blogData,
     pageHandling,
   };
-
   // syntax of the sending the provider
-
-  return (<AppContext.Provider AllData={AllData}>{children}</AppContext.Provider>);
+  return (
+    <AppContext.Provider value={AllData}>
+    {children}
+    </AppContext.Provider>
+  );
 };

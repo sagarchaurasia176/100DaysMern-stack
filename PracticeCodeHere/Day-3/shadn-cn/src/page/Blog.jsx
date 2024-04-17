@@ -1,8 +1,12 @@
-import { AppContext } from "@/Context/AppContex";
-import React, { useContext } from "react";
+import React from "react";
 import Spinner from "./Spinner";
+import { useContext } from "react";
+import { ContextProvider } from "@/Context/AppContex";
+
+
 function Blog() {
-  const { Loading, post } = useContext(AppContext);
+  const {Loading , post} = useContext(ContextProvider)
+  
 
   return (
     <div>
