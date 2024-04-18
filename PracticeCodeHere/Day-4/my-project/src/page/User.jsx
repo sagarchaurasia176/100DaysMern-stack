@@ -1,14 +1,15 @@
-import React from "react";
-import useData from "../hook/useDataFetch";
+import React, { useContext } from "react";
 import { BarLoader } from "react-spinners";
+import { ContextCreate } from "../context/AllStates";
 
-function Card() {
-  const { loading, apiHandler } = useData("");
-  // api callsb
-  const MoveHandler = () => {
-    apiHandler();
-    console.log(apiHandler());
-  };
+function User() {
+  const { loading, random, setRandom , setLoading } = useContext(ContextCreate);
+
+  function MoveHandler() {
+    setLoading(true)
+      setRandom(random)
+      setLoading(false)
+  }
 
   return (
     <div>
@@ -34,24 +35,28 @@ function Card() {
             </svg>
           </button>
         </div>
+
         {loading ? (
-          <BarLoader />
+          <BarLoader className=" items-center m-auto" />
         ) : (
-          <>
-            <div class="flex flex-col items-center pb-10">
-              <img
-                class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src="/docs/images/people/profile-picture-3.jpg"
-                alt="Bonnie image"
-              />
-              <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                Bonnie Green
-              </h5>
-              <span class="text-sm text-gray-500 dark:text-gray-400">
-                Visual Designer
-              </span>
-            </div>
-          </>
+          random.map((values) => (
+            <>
+              <div class="flex flex-col items-center pb-10">
+                <img
+                  class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                  src={values.picture.medium}
+                  alt="Bonnie image"
+                />
+                <h5 class="mb-1 text-xl font-medium
+                 text-gray-900 dark:text-white">
+                {values.login.username}
+                </h5>
+                <span class="text-sm text-gray-500 dark:text-gray-400">
+                  {values.email}
+                </span>
+              </div>
+            </>
+          ))
         )}
 
         <div class="flex m-auto h-auto p-2 ">
@@ -70,4 +75,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default User;

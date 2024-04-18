@@ -1,5 +1,5 @@
 import { ApiUrl } from "@/Api/BaseUrl";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 //context API HERE
 export const AllstatesData = createContext();
 
@@ -10,8 +10,6 @@ export default function AllstatesProvider({ children }) {
   const [total, setTotal] = useState(null);
   const [post, setPost] = useState([]);
 
-
-
   //for api calling here
   const ApiCalling = async () => {
     setLoading(true);
@@ -19,34 +17,32 @@ export default function AllstatesProvider({ children }) {
     try {
       const FetchData = await fetch(url);
       const convertJso = await FetchData.json();
-     // console.log(convertJso);
+      console.log(convertJso);
+      // console.log(convertJso);
       //getting the data from the json
       setPage(convertJso.page);
       setTotal(convertJso.total);
       setPost(convertJso.post);
-      setLoading(false);
     } catch {
-      console.error("error in the contextAPI")
+      console.error("error in the contextAPI");
     }
     setLoading(false);
   };
+
+  useEffect(()=>{
+    ApiCalling()
+  },[])
 
   const pageHandler = (page) => {
     setPage(page);
     ApiCalling();
   };
 
-
-
-
-
   // convert into one objects
   const ValuesOFData = {
-    ApiCalling,
     pageHandler,
     Loading,
     setPost,
-    setLoading,
     page,
     setPage,
     setTotal,
@@ -55,9 +51,8 @@ export default function AllstatesProvider({ children }) {
     setLoading,
   };
 
-  return (
-    <AllstatesData.Provider value={ValuesOFData}>
+  return <AllstatesData.Provider value={ValuesOFData}>
       {children}
     </AllstatesData.Provider>
-  );
+
 }

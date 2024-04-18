@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Spinner from "./Spinner";
+
+
+
 function Navbar() {
-  const [txt, setTxt] = useState(false);
+  const [txt, setTxt] = useState(true);
   const ChagneBtTxt = () => {
     setTxt(!txt);
   };
   return (
     <div>
-      <nav className="border-gray-200 w-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+      <nav className="border-gray-200 w-full bg-gray-50
+       dark:bg-gray-800 dark:border-gray-700">
         <div className="max-w-screen-xl flex 
         flex-wrap items-center justify-between mx-auto p-2 rounded-md">
           <NavLink to="/">
@@ -20,10 +23,11 @@ function Navbar() {
           </NavLink>
           <Button onClick={ChagneBtTxt}>
             {txt ? (
-              <NavLink to="/">Blog Page</NavLink>
+              <NavLink to="/">Home Page</NavLink>
             ) : (
-              <NavLink to="/Blog">Home Page</NavLink>
-            )}
+
+                  <Link to='/Blog'>Blog Page</Link>
+)}
           </Button>
         </div>
       </nav>

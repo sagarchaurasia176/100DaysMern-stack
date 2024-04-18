@@ -1,5 +1,5 @@
 import { AllstatesData } from "@/Context/AppContex";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Spinner from "./Spinner";
 
 function Blog() {
@@ -13,7 +13,7 @@ function Blog() {
         className="mb-4 text-4xl  font-extrabold leading-none
        tracking-tight text-white md:text-5xl lg:text-2xl dark:text-white"
       >
-        MongoDB, ExpressJS , React Js , Node JS
+          Blog-web
       </h1>
       <hr />
 
@@ -23,7 +23,7 @@ function Blog() {
       <>
         {Loading ? (
           <Spinner />
-        ) : post && post.length > 0 ? (
+        ) : post && post.length === 0 ? (
           <b className=" text-center m-auto  text-white text-2xl">
             🤷‍♂️ Data Not Found Here{" "}
           </b>

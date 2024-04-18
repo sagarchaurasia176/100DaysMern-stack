@@ -1,11 +1,11 @@
 
 import './App.css'
-import Card from './page/userCard'
+import User from './page/User'
 function App() {
 
   return (
     <>
-      <Card/>
+    <User/>
     </>
   )
 }
