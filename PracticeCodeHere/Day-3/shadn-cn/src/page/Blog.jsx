@@ -1,38 +1,35 @@
-import { AllstatesData } from "@/Context/AppContex";
+import { AllstatesData } from "@/Context/AppContext";
 import { useContext } from "react";
 import Spinner from "./Spinner";
-
 function Blog() {
-  //destructure the state which you needed here
-  //this is basically the consumers
-  const { Loading, post } = useContext(AllstatesData);
+  const { Loading, posts } = useContext(AllstatesData);
+  console.log("values is undefined in the blog - post");
+  console.log(posts);
   //now destruct the api here
   return (
     <div>
       <h1
         className="mb-4 text-4xl  font-extrabold leading-none
-       tracking-tight text-white md:text-5xl lg:text-2xl dark:text-white"
+       tracking-tight text-black md:text-5xl lg:text-2xl dark:text-white"
       >
-          Blog-web
+        Blog-web
       </h1>
-      <hr />
-
+      <hr className=" bg-black" />
       <br></br>
-
       {/* this is basically the card components */}
       <>
         {Loading ? (
           <Spinner />
-        ) : post && post.length === 0 ? (
-          <b className=" text-center m-auto  text-white text-2xl">
+        ) : posts && posts.length >= 0 ? (
+          <b className=" text-center m-auto  text-black text-2xl">
             🤷‍♂️ Data Not Found Here{" "}
           </b>
         ) : (
-          post &&
-          post.map((values) => (
+          posts &&
+          posts.map((values) => (
             <div
               key={values.id}
-              className=" w-32 bg-white border
+              className=" w-32 bg-black border
              border-gray-200 rounded-lg shadow"
             >
               <div className="p-5">
@@ -52,19 +49,7 @@ function Blog() {
                 <p className="mb-3 font-normal text-black">
                   <span>{values.category}</span>
                 </p>
-
                 <p>{values.date}</p>
-
-                <div className=" flex space-x-2">
-                  {post.tags.map((tag, index) => {
-                    return (
-                      <span
-                        key={index}
-                        className=" text-blue-600"
-                      >{`#${tag}`}</span>
-                    );
-                  })}
-                </div>
               </div>
             </div>
           ))
