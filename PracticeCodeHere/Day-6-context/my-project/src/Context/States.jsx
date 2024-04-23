@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
-export const ThemeContext = createContext();
+export const ThemeContext = createContext(false);
 // this is my providers
 export function States({ children }) {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(false);
 
     //theme logice
 
