@@ -1,15 +1,16 @@
-
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import Navbar from "./pages/Navbar";
 
 function App() {
 
   return (
     <>
       <div>
-        
-             </div>
+          <Navbar/>
+      </div>
     </>
-  )
+  );
 }
 
 export default App
