@@ -18,15 +18,11 @@ function Blog() {
       <br></br>
       {/* this is basically the card components */}
       <>
-        {Loading ? (
-          <Spinner />
-        ) : posts && posts.length >= 0 ? (
+        {Loading ? (<Spinner />) : posts && posts.length >= 0 ? (
           <b className=" text-center m-auto  text-black text-2xl">
             🤷‍♂️ Data Not Found Here{" "}
           </b>
-        ) : (
-          posts &&
-          posts.map((values) => (
+        ) : (posts &&posts.map((values) => (
             <div
               key={values.id}
               className=" w-32 bg-black border
