@@ -2,27 +2,24 @@ import { HandlerContextFunction } from "@/context/AllStates";
 import Spinner from "@/pages/Spinner";
 import React, { useContext } from "react";
 
-function Card() {
-  //consumer
-  const { loading, CardData } = useContext(HandlerContextFunction);
 
+function Card() {
+  const{loading ,  extratToOneArrData} = useContext(HandlerContextFunction)
+  //consumer
   return (
     <div>
       {loading ? (
         <Spinner />
-      ) : CardData.length >= 0 ? (
-        <b>Data not found here!</b>
       ) : (
-        CardData &&
-        CardData.map((values) => (
+           extratToOneArrData().map((values) => {
           <>
             <div>
-              {/* <img src={} alt="" />  */}
-              <p></p>
-              <span></span>
+              <img src={values.image.url} alt="" />
+              <p>{values.title}</p>
+              <span>{values.description}</span>
             </div>
-          </>
-        ))
+          </>;
+        })
       )}
     </div>
   );

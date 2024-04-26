@@ -1,13 +1,12 @@
-const { createContext, useEffect, useState } = require("react");
 import { apiUrl } from "../data";
+import { useState, useEffect, createContext } from "react";
 //useContext
-export const CreateStates = createContext();
+export const CreateStates = createContext('');
 //these all are the producer here
 export const HandlerContextFunction = ({ children }) => {
   const ApiUrl = apiUrl;
   const [loading, setLoading] = useState(false);
   const [CardData, setCardData] = useState([]);
-
   const FilterBtn = async () => {
     try {
       setLoading(true);
@@ -24,16 +23,31 @@ export const HandlerContextFunction = ({ children }) => {
     FilterBtn();
   }, []);
 
+let getData = [];
+
+// all the filterData here passed
+  const extratToOneArrData=()=>{
+      Object.values(CardData).forEach((category)=>{
+          category.forEach((course)=>{
+              getData.push(course);
+          })
+    })
+      return getData;
+  }
+
+
+
+  //exports the context here
   const HandlerValues = {
     loading,
     CardData,
-    setCardData
+    setCardData,
+    extratToOneArrData
   };
 
-    //exports the context here
-    return (
-        <>
-        <CreateStates.Provider value={HandlerValues}>
+  return (
+    <>
+      <CreateStates.Provider value={HandlerValues}>
         {children}
       </CreateStates.Provider>
     </>
