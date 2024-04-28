@@ -3,14 +3,8 @@ import "./App.css";
 // import { Route, Routes } from "react-router-dom";
 import Blog from "./page/Blog";
 // import Navbar from "./page/Navbar";
-import { useContext, useEffect } from "react";
-import { AllstatesData } from "./Context/AppContext";
 
 function App() {
-  const { ApiCalling } = useContext(AllstatesData);
-  useEffect(() => {
-    ApiCalling();
-  }, []);
 
   
   return (

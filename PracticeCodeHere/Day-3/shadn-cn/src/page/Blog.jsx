@@ -1,10 +1,11 @@
-import { AllstatesData } from "@/Context/AppContext";
-import { useContext } from "react";
+import  {AllstatesData}  from "@/Context/AppContext";
+import  {useContext}  from "react";
 import Spinner from "./Spinner";
+
+
 function Blog() {
-  const { Loading, posts } = useContext(AllstatesData);
-  console.log("values is undefined in the blog - post");
-  console.log(posts);
+  const  {Loading , posts } = useContext(AllstatesData);
+  // console.log("values is undefined in the blog - post");
   //now destruct the api here
   return (
     <div>
@@ -22,7 +23,7 @@ function Blog() {
           <b className=" text-center m-auto  text-black text-2xl">
             🤷‍♂️ Data Not Found Here{" "}
           </b>
-        ) : (posts &&posts.map((values) => (
+        ) : (posts && posts.map((values) => (
             <div
               key={values.id}
               className=" w-32 bg-black border

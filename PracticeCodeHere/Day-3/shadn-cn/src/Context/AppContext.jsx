@@ -32,6 +32,8 @@ export default function AllstatesProvider({ children }) {
     ApiCalling();
 
   };// convert into one objects
+
+  
   const ValuesOFData = {
     ApiCalling,
     pageHandler,
