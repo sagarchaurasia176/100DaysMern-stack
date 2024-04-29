@@ -1,13 +1,17 @@
+import { useContext } from "react";
+import "./App.css";
+import User from "./page/User";
+import { ContextCreate } from "./context/AllStates";
 
-import './App.css'
-import User from './page/User'
 function App() {
-
+  const heading = useContext(ContextCreate);
+  console.log(heading);
   return (
     <>
-    <User/>
+      <h1 className=" text-white">{heading}</h1>
+      <User />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

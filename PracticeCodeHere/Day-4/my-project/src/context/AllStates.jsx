@@ -3,16 +3,11 @@ import React, { createContext, useEffect, useState } from "react";
 export const ContextCreate = createContext();
 //provider
 export function AllStates({children}) {
+  
   const [loading, setLoading] = useState(false);
   const [random, setRandom] = useState([]);
   // values
-  const values = {
-    loading,
-    setLoading,
-    random,
-    setRandom,
-  };
-
+  const heading = "Testimonials"
   //api calling
   useEffect(() => {
     const FetchDatas = async () => {
@@ -30,6 +25,17 @@ export function AllStates({children}) {
 
     FetchDatas();
   }, []);
+
+  const values = 
+  
+  {
+    loading,
+    setLoading,
+    random,
+    setRandom,
+    heading
+  };
+
 
 
 return(<ContextCreate.Provider value={values}>

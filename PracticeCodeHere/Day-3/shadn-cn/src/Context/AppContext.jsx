@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 // import { ApiUrl } from "@/Api/BaseUrl";
 export const AllstatesData = createContext();
 export default function AllstatesProvider({ children }) {
-  
   //providers
   const [Loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -12,9 +11,13 @@ export default function AllstatesProvider({ children }) {
   //for api calling here
   const ApiCalling = async () => {
     setLoading(true);
+
     try {
-      const FetchData = await fetch("https://codehelp-apis.vercel.app/api/get-blogs");
+      const FetchData = await fetch(
+        "https://codehelp-apis.vercel.app/api/get-blogs"
+      );
       const convertJso = await FetchData.json();
+      console.log(convertJso);
       setPage(convertJso.page);
       setTotal(convertJso.total);
       setPost(convertJso.post);
@@ -27,13 +30,12 @@ export default function AllstatesProvider({ children }) {
 
     setLoading(false);
   };
+
   const pageHandler = (page) => {
     setPage(page);
     ApiCalling();
+  }; // convert into one objects
 
-  };// convert into one objects
-
-  
   const ValuesOFData = {
     ApiCalling,
     pageHandler,
@@ -46,5 +48,9 @@ export default function AllstatesProvider({ children }) {
     posts,
     setLoading,
   };
-  return <AllstatesData.Provider value={ValuesOFData}>{children}</AllstatesData.Provider>
+  return (
+    <AllstatesData.Provider value={ValuesOFData}>
+      {children}
+    </AllstatesData.Provider>
+  );
 }

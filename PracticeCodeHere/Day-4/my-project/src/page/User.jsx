@@ -3,29 +3,23 @@ import { BarLoader } from "react-spinners";
 import { ContextCreate } from "../context/AllStates";
 
 function User() {
-  const { loading, random, setRandom , setLoading } = useContext(ContextCreate);
-
-  function MoveHandler() {
-    setLoading(true)
-      setRandom(random)
-      setLoading(false)
-  }
+  const {loading, random} = useContext(ContextCreate);
 
   return (
     <div>
-      {/* userCard */}
-
-      <div class="w-full m-auto  my-28 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div class="flex justify-end px-4 pt-4">
+        {/* userCard */}
+        
+      <div className="w-full m-auto  my-28 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="flex justify-end px-4 pt-4">
           <button
             id="dropdownButton"
             data-dropdown-toggle="dropdown"
-            class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+            className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
             type="button"
           >
-            <span class="sr-only">Open dropdown</span>
+            <span className="sr-only">Open dropdown</span>
             <svg
-              class="w-5 h-5"
+              className="w-5 h-5"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -38,20 +32,19 @@ function User() {
 
         {loading ? (
           <BarLoader className=" items-center m-auto" />
-        ) : (
-          random.map((values) => (
+        ) : ( random.map((values) => (
             <>
               <div class="flex flex-col items-center pb-10">
                 <img
-                  class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                  className="w-24 h-24 mb-3 rounded-full shadow-lg"
                   src={values.picture.medium}
                   alt="Bonnie image"
                 />
-                <h5 class="mb-1 text-xl font-medium
+                <h5 className="mb-1 text-xl font-medium
                  text-gray-900 dark:text-white">
                 {values.login.username}
                 </h5>
-                <span class="text-sm text-gray-500 dark:text-gray-400">
+                <span className="text-sm text-gray-500 dark:text-gray-400">
                   {values.email}
                 </span>
               </div>
@@ -59,13 +52,13 @@ function User() {
           ))
         )}
 
-        <div class="flex m-auto h-auto p-2 ">
-          <button class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <div className="flex m-auto h-auto p-2 ">
+          <button className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Add friend
           </button>
           <button
-            onClick={MoveHandler}
-            class="py-2 transition-all translate-x-2 duration-100 px-4 ms-2 text-sm font-medium text-white focus:outline-none bg-slate-800 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            // onClick={MoveHandler}
+            className="py-2 transition-all translate-x-2 duration-100 px-4 ms-2 text-sm font-medium text-white focus:outline-none bg-slate-800 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           >
             Move
           </button>
