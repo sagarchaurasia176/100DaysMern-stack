@@ -1,6 +1,7 @@
 import { useContext} from "react";
 import "./App.css";
 import { ContextProvider } from "./Context/ContextProvider";
+import Blog from "./Components/Blog";
 // import Home from "./Page/Home";
 
 
@@ -10,12 +11,10 @@ function App() {
   //   BlogData();
   // },[])
   // return the data here
-  const Data = useContext(ContextProvider) 
-  console.log(Data)
   return(
     <>
       {/* <Home/> */}
-      <p>{Data}</p>
+      <Blog/>
     </>
   )
 }

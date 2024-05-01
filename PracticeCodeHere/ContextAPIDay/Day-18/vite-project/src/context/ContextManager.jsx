@@ -4,27 +4,24 @@ export const ContextManagers = createContext(null);
 
 export const ContextManager = ({ children }) => {
   const [txt, setTxt] = useState(1);
-  const[loading , setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function IncrementBtn() {
-    try{
-        setLoading(true)
-        setTxt(txt + 1);
-        setLoading(false)
+    try {
+      setLoading(true);
+      setTxt(txt + 1);
+      setLoading(false);
+    } catch {
+      console.log("error");
     }
-    catch{
-        console.log("error")
-    }
-   
   }
   function DecrementBtn() {
-    try{
-        setLoading(true)
-        setTxt(txt - 1);
-        setLoading(false);
-    }
-    catch{
-        console.log("error")
+    try {
+      setLoading(true);
+      setTxt(txt - 1);
+      setLoading(false);
+    } catch {
+      console.log("error");
     }
   }
 
@@ -32,7 +29,7 @@ export const ContextManager = ({ children }) => {
     txt,
     IncrementBtn,
     DecrementBtn,
-    loading
+    loading,
   };
   return (
     <ContextManagers.Provider value={values}>

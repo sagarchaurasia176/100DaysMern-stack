@@ -1,11 +1,18 @@
-import React, { createContext} from "react";
+import React, { createContext } from "react";
+import { useState } from "react";
 // target to complete from this project is
 // dark mode and card data from api
 //context Provider here
-export const ContextData = createContext();
+export const ContextData = createContext("");
 // export the context API here
 export const ContextProvider = ({ children }) => {
-      const data  = "sagar from context api"
+    const[txt , setTxt] = useState(1);
+
+    const ShowMyName =()=>{
+      setTxt(txt + 1)
+      console.log("clicked")
+        // setTxt("sagar chaurasia");
+    }
 
   //all the states
   // const [theme, setTheme] = useState(false);
@@ -37,6 +44,9 @@ export const ContextProvider = ({ children }) => {
   //     setPost,
   //   };
 
+  const values = {ShowMyName,txt};
 
-  return(<ContextData.Provider value={{data}}>{children}</ContextData.Provider>) 
+  return (
+    <ContextData.Provider value={{ values }}>{children}</ContextData.Provider>
+  );
 };

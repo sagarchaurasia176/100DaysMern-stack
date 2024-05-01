@@ -1,8 +1,13 @@
 import React from "react";
+import { useContext } from "react";
+import { ContextData } from "../Context/ContextProvider";
 
 const Blog = () => {
+  const { ShowMyName, txt } = useContext(ContextData);
   return (
     <div className=" ">
+      <h1>{txt}</h1>  
+      <button onClick={()=> ShowMyName()} className=" cursor-pointer bg-blue-200 p-2">CLick To me</button>
       {/* card */}
       <div className=" grid sm:grid-cols-3 gap-3 border border-spacing-1 sm:w-[80%] p-2  bg-slate-800 m-auto ">
         <a
