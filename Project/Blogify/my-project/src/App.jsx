@@ -1,17 +1,21 @@
-import { useContext, useEffect } from "react";
+import { useContext} from "react";
 import "./App.css";
-import Home from "./Page/Home";
-import AllStatesContex from "./Context/AllStatesContex";
+import { ContextProvider } from "./Context/ContextProvider";
+// import Home from "./Page/Home";
+
 
 function App() {
-  const BlogData = useContext(AllStatesContex)
-  useEffect(()=>{
-    BlogData();
-  },[])
+  // const BlogData = useContext(AllStatesContex)
+  // useEffect(()=>{
+  //   BlogData();
+  // },[])
   // return the data here
-    return(
+  const Data = useContext(ContextProvider) 
+  console.log(Data)
+  return(
     <>
-      <Home/>
+      {/* <Home/> */}
+      <p>{Data}</p>
     </>
   )
 }
