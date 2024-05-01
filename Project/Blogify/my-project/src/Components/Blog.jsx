@@ -4,7 +4,7 @@ const Blog = () => {
   return (
     <div className=" ">
       {/* card */}
-      <div className=" grid sm:grid-cols-3 p-1 m-auto ">
+      <div className=" grid sm:grid-cols-3 gap-3 border border-spacing-1 sm:w-[80%] p-2  bg-slate-800 m-auto ">
         <a
           href="#"
           class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
