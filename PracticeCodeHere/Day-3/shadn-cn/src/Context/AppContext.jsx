@@ -8,21 +8,23 @@ export default function AllstatesProvider({ children }) {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(null);
   const [posts, setPost] = useState([]);
+ 
+ 
   //for api calling here
   const ApiCalling = async () => {
     setLoading(true);
 
     try {
-      const FetchData = await fetch(
-        "https://codehelp-apis.vercel.app/api/get-blogs"
-      );
+      const FetchData = await fetch("https://codehelp-apis.vercel.app/api/get-blogs");
       const convertJso = await FetchData.json();
       console.log(convertJso);
       setPage(convertJso.page);
       setTotal(convertJso.total);
-      setPost(convertJso.post);
-    } catch {
-      console.error("error in the contextAPI");
+      setPost(convertJso.posts);
+    } 
+    
+    catch {
+      console.log("error in the contextAPI");
       setPage(1);
       setPost([]);
       setTotal(null);
