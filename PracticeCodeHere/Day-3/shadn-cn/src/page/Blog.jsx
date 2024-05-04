@@ -1,15 +1,20 @@
 import { AllstatesData } from "@/Context/AppContext";
 import { useContext, useEffect } from "react";
 import Spinner from "./Spinner";
+import Login from "./Login";
+import Theme from "./Theme";
+
+// blog function here
 
 function Blog() {
   const { Loading, posts, ApiCalling } = useContext(AllstatesData);
   useEffect(() => {
     ApiCalling();
   }, []);
+
   return (
     <div>
-      <div className=" w-full flex justify-evenly sm:w-full bg-white ">
+      <div className=" flex justify-evenly sm:w-full ">
         <div>
           <h1
             className="mb-4 text-2xl  font-extrabold leading-none
@@ -18,11 +23,10 @@ function Blog() {
             Random Blogs
           </h1>
         </div>
-        <div className=" space-x-4">
-          <button className=" p-1 bg-yellow-300 rounded-md w-[80px]">Login</button>
-          <button className=" p-1 bg-slate-800 text-white rounded-md w-[80px]">
-            Theme
-          </button>
+
+        <div className="flex  space-x-4">
+          <Login />
+          <Theme />
         </div>
       </div>
 
@@ -41,8 +45,7 @@ function Blog() {
           posts.map((values) => (
             <div
               key={values.id}
-              className=" w-auto p-2  gap-3  border
-             border-gray-200 rounded-lg shadow"
+              className=" w-auto p-2  gap-3  border rounded-lg shadow"
             >
               <div className=" flex ">{/* <h3 */}</div>
               <div>

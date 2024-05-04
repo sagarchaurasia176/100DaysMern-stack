@@ -1,6 +1,4 @@
 import { createContext, useState } from "react";
-//context API HERE
-// import { ApiUrl } from "@/Api/BaseUrl";
 export const AllstatesData = createContext();
 export default function AllstatesProvider({ children }) {
   //providers
@@ -8,12 +6,15 @@ export default function AllstatesProvider({ children }) {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(null);
   const [posts, setPost] = useState([]);
- 
- 
+  //for dark mode creations
+  const [theme ,setTheme] = useState(true);
+
+  const ThemeChanger = ()=>{
+      setTheme(!theme);
+  }
   //for api calling here
   const ApiCalling = async () => {
     setLoading(true);
-
     try {
       const FetchData = await fetch("https://codehelp-apis.vercel.app/api/get-blogs");
       const convertJso = await FetchData.json();
@@ -22,25 +23,19 @@ export default function AllstatesProvider({ children }) {
       setTotal(convertJso.total);
       setPost(convertJso.posts);
     } 
-    
     catch {
       console.log("error in the contextAPI");
       setPage(1);
       setPost([]);
       setTotal(null);
     }
-
     setLoading(false);
   };
-
-  const pageHandler = (page) => {
-    setPage(page);
-    ApiCalling();
-  }; // convert into one objects
-
+  // VALUES OF THE DATA HERE
   const ValuesOFData = {
+    theme,
+    ThemeChanger,
     ApiCalling,
-    pageHandler,
     Loading,
     setPost,
     page,
@@ -55,4 +50,4 @@ export default function AllstatesProvider({ children }) {
       {children}
     </AllstatesData.Provider>
   );
-}
+};
