@@ -1,14 +1,14 @@
-import { useContext } from "react";
 import "./App.css";
 import Blog from "./page/Blog";
-import AllstatesProvider from "./Context/AppContext";
-
+import ThemeNav from "./page/ThemeNav";
+  
 function App() {
     // theme changer 
 
   return (
     <>
         <div>
+        <ThemeNav/>
         <Blog />
       </div>
     </>

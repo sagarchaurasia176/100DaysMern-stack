@@ -7,7 +7,7 @@ export default function AllstatesProvider({ children }) {
   const [total, setTotal] = useState(null);
   const [posts, setPost] = useState([]);
   //for dark mode creations
-  const [theme ,setTheme] = useState(true);
+  const [theme ,setTheme] = useState(false);
 
   const ThemeChanger = ()=>{
       setTheme(!theme);
