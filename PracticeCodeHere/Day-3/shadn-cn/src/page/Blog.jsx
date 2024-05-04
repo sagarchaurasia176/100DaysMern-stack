@@ -2,9 +2,7 @@ import { AllstatesData } from "@/Context/AppContext";
 import { useContext, useEffect } from "react";
 import Spinner from "./Spinner";
 
-
 // blog function here
-
 function Blog() {
   const { Loading, posts, ApiCalling } = useContext(AllstatesData);
   useEffect(() => {
@@ -24,10 +22,7 @@ function Blog() {
         ) : (
           posts &&
           posts.map((values) => (
-            <div
-              key={values.id}
-              className=" w-auto p-2  gap-3   rounded-lg shadow"
-            >
+            <div key={values.id} className="p-2  rounded-lg shadow">
               <div className=" flex ">{/* <h3 */}</div>
               <div>
                 {values.title}

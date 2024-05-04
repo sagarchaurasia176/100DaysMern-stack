@@ -5,26 +5,15 @@ import { MdDarkMode } from "react-icons/md";
 
 const Theme = () => {
   //destructure the theme
-  const { theme, ThemeChanger } = useContext(AllstatesData);
-
+  const { ChangerMode, ThemeChanger } = useContext(AllstatesData);
+  console.log(ChangerMode);
   return (
     <div>
-      {theme ? (
-        //this is the dark
-        <CiDark
-          className=" bg-slate-100 
-                 text-black size-8
-                rounded-md cursor-pointer "
-        />
-      ) : (
-        //this is the white
-        <MdDarkMode
-          className="bg-slate-800 text-white size-8  
-                rounded-md cursor-pointer"
-        />
-      )}
-      {/* light mode apply here */}
-    </div>
+      <div onClick={() => ThemeChanger(!ChangerMode)}>
+     {ChangerMode ? <CiDark className=" size-8 cursor-pointer bg-slate-600 rounded"/> : <MdDarkMode className=" size-8 cursor-pointer bg-slate-50 rounded-md"/>}
+   </div>
+      </div>
+    // </div>
   );
 };
 

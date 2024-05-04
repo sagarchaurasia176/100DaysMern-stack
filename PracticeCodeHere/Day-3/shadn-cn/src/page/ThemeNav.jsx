@@ -4,7 +4,7 @@ import Theme from "./Theme";
 const ThemeNav = () => {
   return (
     <div>
-       <div className="  space-x-0 flex bg-slate-800 p-3  justify-evenly ">
+       <div className="  space-x-0 mt-[-32px]  w-full  flex bg-slate-800 p-3  justify-evenly ">
         <div>
           <h1
             className="text-2xl  font-extrabold leading-none

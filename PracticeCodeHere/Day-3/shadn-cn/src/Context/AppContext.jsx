@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import '../App.css'
+
+import { createContext, useEffect, useState } from "react";
 export const AllstatesData = createContext();
 export default function AllstatesProvider({ children }) {
   //providers
@@ -7,11 +9,25 @@ export default function AllstatesProvider({ children }) {
   const [total, setTotal] = useState(null);
   const [posts, setPost] = useState([]);
   //for dark mode creations
-  const [theme ,setTheme] = useState(false);
-
+  const [isDark ,setDark] = useState(true);
+  
   const ThemeChanger = ()=>{
-      setTheme(!theme);
-  }
+      //true or false  
+      setDark(() => !isDark);
+    }
+// check the theme for light and the darks
+  const ChangerMode = isDark ? "dark" : "light"
+
+    // api key
+
+  // 6987b744e8fd485d835b18083c3de2e4
+  // this is basically the setAttribute which directly update to the html of your page
+
+  useEffect(()=>{
+      document.documentElement.setAttribute("data-theme" , ChangerMode);
+    },[isDark])
+
+
   //for api calling here
   const ApiCalling = async () => {
     setLoading(true);
@@ -33,7 +49,7 @@ export default function AllstatesProvider({ children }) {
   };
   // VALUES OF THE DATA HERE
   const ValuesOFData = {
-    theme,
+    ChangerMode,
     ThemeChanger,
     ApiCalling,
     Loading,
