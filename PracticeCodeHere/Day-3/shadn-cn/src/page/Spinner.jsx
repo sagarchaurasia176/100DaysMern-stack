@@ -1,9 +1,10 @@
 import React from 'react'
-import { ClipLoader } from 'react-spinners'
+import { HashLoader } from 'react-spinners'
 function Spinner() {
     return (
         <div>
-            <ClipLoader className=' flex m-auto  my-72' color="#36d7b7" />
+            <HashLoader   className=' justify-center flex m-auto '  color="#36d7b7"/>
+            {/* <ClipLoader className=' justify-center  h-screen bg-black flex m-auto' color="#36d7b7" /> */}
         </div>
     )
 }

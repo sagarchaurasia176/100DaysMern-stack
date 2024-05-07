@@ -1,11 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   return (
     <div>
-      <button className=" p-1 cursor-pointer bg-yellow-300 rounded-md w-[80px]">
-        Login
+      <NavLink to='/BlogContent'>
+      <button className=" p-1 cursor-pointer text-black bg-yellow-300 rounded-md ">
+        Check Content
       </button>
+      </NavLink>
+     
     </div>
   );
 };

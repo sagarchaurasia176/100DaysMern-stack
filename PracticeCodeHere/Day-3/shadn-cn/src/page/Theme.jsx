@@ -5,14 +5,17 @@ import { MdDarkMode } from "react-icons/md";
 
 const Theme = () => {
   //destructure the theme
-  const { ChangerMode, ThemeChanger } = useContext(AllstatesData);
-  console.log(ChangerMode);
+  const { isLoggedIn, themeChanger } = useContext(AllstatesData);
   return (
     <div>
-      <div onClick={() => ThemeChanger(!ChangerMode)}>
-     {ChangerMode ? <CiDark className=" size-8 cursor-pointer bg-slate-600 rounded"/> : <MdDarkMode className=" size-8 cursor-pointer bg-slate-50 rounded-md"/>}
-   </div>
+      <div onClick={() => isLoggedIn(themeChanger)}>
+        {themeChanger ? (
+          <CiDark className=" size-8 cursor-pointer bg-slate-600 rounded" />
+        ) : (
+          <MdDarkMode className=" size-8 cursor-pointer bg-slate-50 rounded-md" />
+        )}
       </div>
+    </div>
     // </div>
   );
 };

@@ -1,69 +1,70 @@
-import '../App.css'
-
+import "../App.css";
 import { createContext, useEffect, useState } from "react";
 export const AllstatesData = createContext();
+
+// the main funcition here
 export default function AllstatesProvider({ children }) {
   //providers
   const [Loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(null);
+  const [totalPages, setTotal] = useState(null);
   const [posts, setPost] = useState([]);
-  //for dark mode creations
-  const [isDark ,setDark] = useState(true);
-  
-  const ThemeChanger = ()=>{
-      //true or false  
-      setDark(() => !isDark);
-    }
-// check the theme for light and the darks
-  const ChangerMode = isDark ? "dark" : "light"
+  const [theme, setTheme] = useState(true);
 
-    // api key
+  //onClick Functions
+  const isLoggedIn = () => {
+    setTheme(!theme);
+  }; // theme Changer apply here
+  const themeChanger = theme ? "dark" : "light";
+  //the theme concepts we have to passed into the html header page
+  useEffect(() => {
+    document.documentElement.setAttribute("theme-changer", themeChanger);
+  }, [themeChanger]);
 
-  // 6987b744e8fd485d835b18083c3de2e4
-  // this is basically the setAttribute which directly update to the html of your page
+  const url = "https://codehelp-apis.vercel.app/api/get-blogs";
 
-  useEffect(()=>{
-      document.documentElement.setAttribute("data-theme" , ChangerMode);
-    },[isDark])
-
-
-  //for api calling here
-  const ApiCalling = async () => {
+  //API CALLING HERE
+  const ApiCalling = async (page = 1) => {
     setLoading(true);
+
     try {
-      const FetchData = await fetch("https://codehelp-apis.vercel.app/api/get-blogs");
+      const FetchData = await fetch(`${url}?page=${page}`);
       const convertJso = await FetchData.json();
-      console.log(convertJso);
       setPage(convertJso.page);
-      setTotal(convertJso.total);
+      setTotal(convertJso.totalPages);
       setPost(convertJso.posts);
     } 
-    catch {
-      console.log("error in the contextAPI");
+      catch {
       setPage(1);
       setPost([]);
       setTotal(null);
     }
+
     setLoading(false);
   };
-  // VALUES OF THE DATA HERE
+
+  // page Handler function apply here
+  const PageHandler = (page) => {
+    setPage(page);
+    ApiCalling(page);
+  };
+
+  //values of Data here
   const ValuesOFData = {
-    ChangerMode,
-    ThemeChanger,
+    PageHandler,
+    isLoggedIn,
+    themeChanger,
     ApiCalling,
     Loading,
-    setPost,
     page,
-    setPage,
-    setTotal,
-    total,
+    totalPages,
     posts,
-    setLoading,
   };
+
+  // FINALLY returned it here
   return (
     <AllstatesData.Provider value={ValuesOFData}>
       {children}
     </AllstatesData.Provider>
   );
-};
+}

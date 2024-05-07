@@ -1,17 +1,24 @@
 /* this is another way to create the root */
-[data-theme = "light"] {
+/* [data-theme = "light"] {
   --bg-color:white;
   --text-color:black;
   --heading-color:white;
-
 }
 [data-theme = "dark"] {
   --bg-color:black;
   --text-color:white;
   --heading-color:white;
+} */
+/* theme changer for light */
+[theme-changer = 'light'] {
+  --bg-color:white;
+  --text-color:black;
 }
-
-
+/* theme changer for dark */
+[theme-changer = 'dark']{
+  --bg-color : black;
+  --text-color : white; 
+}
 #root {
   background: var(--bg-color);
   color: var(--text-color);
@@ -19,4 +26,3 @@
   padding: 2rem;
   text-align: center;
 }
-
