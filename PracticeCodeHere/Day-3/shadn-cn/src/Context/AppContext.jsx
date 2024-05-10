@@ -20,8 +20,18 @@ export default function AllstatesProvider({ children }) {
   useEffect(() => {
     document.documentElement.setAttribute("theme-changer", themeChanger);
   }, [themeChanger]);
+  let urlOFApi = "https://codehelp-apis.vercel.app/api/get-blogs";
 
-  const url = "https://codehelp-apis.vercel.app/api/get-blogs";
+  // url of the api 
+  const url = `${urlOFApi} ? page =${(page = 1)}`;
+  // for tag page here
+  if (tag) {
+    urlOFApi += `&tag=${tag}`;
+  }
+  // for category page
+  if (category) {
+    urlOFApi += `&category=${category}`;
+  }
 
   //API CALLING HERE
   const ApiCalling = async (page = 1) => {
@@ -33,8 +43,7 @@ export default function AllstatesProvider({ children }) {
       setPage(convertJso.page);
       setTotal(convertJso.totalPages);
       setPost(convertJso.posts);
-    } 
-      catch {
+    } catch {
       setPage(1);
       setPost([]);
       setTotal(null);
