@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const ThemeNav = () => {
   return (
     <div>
-       <div className="  space-x-0 mt-[-32px]  w-full  flex bg-slate-800 p-3  justify-evenly ">
+       <div className="  space-x-0 mt-[-32px]   w-full  flex bg-slate-800 p-3  justify-evenly ">
         <NavLink to='/'>
         <div>
           <h1
@@ -22,7 +22,6 @@ const ThemeNav = () => {
         <div className="flex space-x-4">
           <Login />
           <Theme />
-
         </div>
       </div>
     </div>
