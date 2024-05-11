@@ -9,7 +9,6 @@ const BootmSec = () => {
     <div>
       <div className=" bg-slate-800 flex justify-around w-full p-2">
         {/* for preivious page here */}
-
         {page > 1 && (
           <>
             <button
@@ -20,18 +19,18 @@ const BootmSec = () => {
             </button>
           </>
         )}
-
         {page < totalPages && (
           <>
             <button
               className=" bg-slate-900 text-white p-1 w-[100px]"
-              onClick={() => PageHandler(page + 1)}>
+              onClick={() => PageHandler(page + 1)}
+            >
               Next Page
             </button>
           </>
-
-        )}  {/* Button conecpts apply here */}
-           <Button>
+        )}{" "}
+        {/* Button conecpts apply here */}
+        <Button>
           Page {page} of {totalPages}
         </Button>
       </div>

@@ -20,26 +20,29 @@ export default function AllstatesProvider({ children }) {
   useEffect(() => {
     document.documentElement.setAttribute("theme-changer", themeChanger);
   }, [themeChanger]);
+    
   const urlOFApi = "https://codehelp-apis.vercel.app/api/get-blogs";
 
-  // url of the api 
-  // for tag page here
-  // if (tag) {
-  //   urlOFApi += `&tag=${tag}`;
-  // }
-  // // for category page
-  // if (category) {
-  //   urlOFApi += `&category=${category}`;
-  // }
 
   //API CALLING HERE
-  const ApiCalling = async (page = 1) => {
-  const url = `${urlOFApi}?page=${(page = 1)}`;
-
+  const ApiCalling = async (page = 1, tag = null, category) => {
+    const url = `${urlOFApi}?page=${page}`;
     setLoading(true);
+    // url of the api
+    // for tag page here
+    if (tag) {
+      urlOFApi += `&tag=${tag}`;
+    }
+    // for category page
+    if (category) {
+      urlOFApi += `&category=${category}`;
+    }
 
+
+    
+    // api cocepts
     try {
-      const FetchData = await fetch(`${url}?page=${page}`);
+      const FetchData = await fetch(url);
       const convertJso = await FetchData.json();
       setPage(convertJso.page);
       setTotal(convertJso.totalPages);
@@ -49,7 +52,6 @@ export default function AllstatesProvider({ children }) {
       setPost([]);
       setTotal(null);
     }
-
     setLoading(false);
   };
 

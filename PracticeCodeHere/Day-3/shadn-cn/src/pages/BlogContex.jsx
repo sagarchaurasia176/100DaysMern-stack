@@ -1,11 +1,14 @@
+import Blog from "@/page/Blog";
+import BootmSec from "@/page/BootmSec";
 import React from "react";
 
 const BlogContex = () => {
   return(
-      <div>BlogContex</div>
-      
-)
+    <>
+        <Blog/>
+    </>
 
+  );
 };
 
 export default BlogContex;

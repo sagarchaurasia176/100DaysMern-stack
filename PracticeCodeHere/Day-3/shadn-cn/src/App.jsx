@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Blog from "./page/Blog";
+// import Blog from "./page/Blog";
 // import BootmSec from "./page/BootmSec";
 import HomePage from "./page/HomePage";
-import { Tags } from "lucide-react";
 import Category from "./pages/Category";
+import BlogContex from "./pages/BlogContex";
+import TagsCategory from "./pages/TagsCategory";
 
 // theme changer
 function App() {
@@ -14,9 +15,9 @@ function App() {
         {/* Routes concepts apply here */}
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/BlogContent" element={<Blog />}></Route>
-          <Route path="/Tags" element={<Tags />}></Route>
-          <Route path="/Category" element={<Category />}></Route>
+          <Route path="/Tags/:tag" element={<TagsCategory />}></Route>
+          <Route path="/BlogContex/:blogId" element={<BlogContex />}></Route>
+          <Route path="/Category/:categoryId" element={<Category />}></Route>
         </Routes>
         {/* <BootmSec /> */}
       </div>

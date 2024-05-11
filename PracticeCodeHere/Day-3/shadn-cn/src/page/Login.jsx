@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Login = () => {
   return (
     <div>
-      <NavLink to='/BlogContent'>
+      <NavLink to='/BlogContex/:blogId'>
       <button className=" p-1 cursor-pointer text-black bg-yellow-300 rounded-md ">
         Check Content
       </button>

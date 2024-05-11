@@ -3,24 +3,36 @@ import Spinner from "./Spinner";
 import BootmSec from "./BootmSec";
 import ThemeNav from "./ThemeNav";
 import { AllstatesData } from "@/Context/AppContext";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 // blog function here
 function Blog() {
   const { Loading, posts, ApiCalling } = useContext(AllstatesData);
-  
-  
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+
   useEffect(() => {
-    ApiCalling();
-    console.log(ApiCalling());
-// tommorow pending works
+    
+    const page = searchParams.get("page") ?? 1;
+    if (location.pathname.includes("tags")) {
+      const tag = location.pathname.split("/").at(-1).replaceAll("-", " ");
+      ApiCalling(Number(page), tag);
 
+    } else if (location.pathname.includes("category")) {
+      const categories = location.pathname
+        .split("/")
+        .at(-1)
+        .replaceAll("-", " ");
+      ApiCalling(categories);
+    } else {
+      ApiCalling(Number(page));
+    }
+  }, [location.pathname, location.search]);
 
-  }, []);
   return (
     <div className=" ">
       <ThemeNav />
       <>
-   
         {Loading ? (
           <Spinner />
         ) : posts && posts.length === 0 ? (
@@ -49,12 +61,12 @@ function Blog() {
                     <span>{values.category}</span>
                   </p>
                   <br></br>
-                   
-                    <span className=" flex justify-between text-blue-500">
-                      {values.tags.map((tag)=>(
-                          <p>#{tag}</p>
-                      ))}
-                    </span>
+
+                  <span className=" flex justify-between text-blue-500">
+                    {values.tags.map((tag) => (
+                      <p>#{tag}</p>
+                    ))}
+                  </span>
                   <p>{values.date}</p>
                 </div>
               </div>
