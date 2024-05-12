@@ -1,7 +1,6 @@
 import "../App.css";
 import { createContext, useEffect, useState } from "react";
 export const AllstatesData = createContext();
-
 // the main funcition here
 export default function AllstatesProvider({ children }) {
   //providers
@@ -20,9 +19,8 @@ export default function AllstatesProvider({ children }) {
   useEffect(() => {
     document.documentElement.setAttribute("theme-changer", themeChanger);
   }, [themeChanger]);
-    
-  const urlOFApi = "https://codehelp-apis.vercel.app/api/get-blogs";
 
+  let urlOFApi = "https://codehelp-apis.vercel.app/api/get-blogs";
 
   //API CALLING HERE
   const ApiCalling = async (page = 1, tag = null, category) => {
@@ -38,8 +36,6 @@ export default function AllstatesProvider({ children }) {
       urlOFApi += `&category=${category}`;
     }
 
-
-    
     // api cocepts
     try {
       const FetchData = await fetch(url);

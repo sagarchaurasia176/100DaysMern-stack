@@ -1,10 +1,11 @@
 import Blog from "@/page/Blog";
-import BootmSec from "@/page/BootmSec";
+import ThemeNav from "@/page/ThemeNav";
 import React from "react";
 
 const BlogContex = () => {
   return(
     <>
+        <ThemeNav/>
         <Blog/>
     </>
 
