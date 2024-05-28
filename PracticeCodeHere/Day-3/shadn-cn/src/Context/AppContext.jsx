@@ -67,6 +67,7 @@ export default function AllstatesProvider({ children }) {
     page,
     totalPages,
     posts,
+    setLoading,
   };
 
   // FINALLY returned it here
