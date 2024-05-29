@@ -5,7 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 export const Store = configureStore({
   reducer: {
     // passedFunction :- is slice function name
-    PassedFunction: Slice 
+    PassedFunction: Slice,
     // here slice is predefined
   },
 });
