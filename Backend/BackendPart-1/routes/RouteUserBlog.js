@@ -4,5 +4,5 @@ const router = express.Router();
 // import the controller here so we get
 const {userBlogsApi} = require('../controller/userBlogApi')
 // apply the routers here so we get
-router.get('/userBlogApi' , userBlogsApi);
+router.post('/userBlogApi' , userBlogsApi);
 module.exports = router;

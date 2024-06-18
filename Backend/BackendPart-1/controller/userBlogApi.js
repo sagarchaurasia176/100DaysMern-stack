@@ -6,7 +6,7 @@ exports.userBlogsApi = async (req, res) => {
     // request from the title , descriptions
     const { title, description } = req.body;
     //now  start to create the db here, so we get
-    const dataCreate = await userBlogsData.find({});
+    const dataCreate = await userBlogsData.create({title , description});
     res.status(200).json({
       success: true,
       data: dataCreate,

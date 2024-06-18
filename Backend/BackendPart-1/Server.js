@@ -16,7 +16,7 @@ app.use("/api/v2", RouteUserBlog);
 
 
 // db connect apply here so we get this,
-const dbConnect = require("./config/Db");
+const dbConnect = require("../BackendPart-1/config/UserDb");
 dbConnect();
 //app run at this port
 app.listen(port, () => {
