@@ -15,6 +15,7 @@ exports.userBlogsApi = async (req, res) => {
   } catch {
     res.status(500).json({
       success: false,
+
       data: "not stored into the db",
       message: "internal error in blogAPI page ! contact to admin panel",
     });

@@ -14,7 +14,8 @@ app.use(express.json());
 // routes data here so we get
 app.use("/api/v2", RouteUserBlog);
 
-
+app.use("yoo")
+app.get("Sagar")
 // db connect apply here so we get this,
 const dbConnect = require("../BackendPart-1/config/UserDb");
 dbConnect();
